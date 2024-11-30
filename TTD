@@ -1,0 +1,40 @@
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+   wait(3)
+   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+
+
+ while task.wait(.1) do 
+     if StartAutoSell == true then 
+if game.PlaceId ~= 78131544126864  then 
+
+    TeleportService = cloneref(game:GetService("TeleportService"))
+    TeleportService:Teleport(78131544126864, game.Players.LocalPlayer)
+
+else
+for _,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.UnitFrame.UnitHolder.UnitList:GetChildren()) do 
+    if v:IsA("Frame") and v:FindFirstChild("TroopsFrame") and v.TroopsFrame:FindFirstChild("TroopIcon") and v.TroopsFrame.TroopIcon.Image == "rbxassetid://129368477907107" then 
+        local args = {
+            [1] = {
+                [1] = {
+                    [1] = "\226\129\130\138",
+                    [2] = "",
+                    [3] = "Crates",
+                    [4] = v.Name,
+                    [5] = price
+                }
+            }
+        }
+        
+        game:GetService("ReplicatedStorage"):WaitForChild("NetworkingContainer"):WaitForChild("DataRemote"):FireServer(unpack(args))
+        
+   end 
+end 
+end 
+else
+     wait()
+     break
+end 
+end 
